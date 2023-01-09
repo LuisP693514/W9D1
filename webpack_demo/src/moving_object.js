@@ -18,3 +18,4 @@ MovingObject.prototype.draw = function (ctx) {
 MovingObject.prototype.isCollidedWith = function (otherMovingObject) {};
 
 module.exports = MovingObject;
+    

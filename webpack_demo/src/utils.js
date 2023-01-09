@@ -8,12 +8,12 @@ function distance(arr1, arr2) {
 }
 
 const Util = {
-  randomVec: function (length) {
+  randomVec(length) {
     const deg = 2 * Math.PI * Math.random();
     return Util.scale([Math.sin(deg), Math.cos(deg)], length);
   },
   // Scale the length of a vector by the given amount.
-  scale: function (vec, m) {
+  scale(vec, m) {
     return [vec[0] * m, vec[1] * m];
   },
 };

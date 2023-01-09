@@ -15,7 +15,7 @@
   \*************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Util = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\n\nfunction Asteroid(size, pos) {\n  this.size = size;\n  this.pos = pos;\n  this.COLOR = \"grey\";\n  this.RADIUS = \"100\";\n  this.object = new MovingObject(\n    this.pos,\n    Util.randomVec(size),\n    this.RADIUS,\n    this.COLOR\n  );\n}  \n\nfunction Surrogate() {}\n\nSurrogate.prototype = MovingObject.prototype;\nAsteroid.prototype = new Surrogate();\nAsteroid.prototype.constructor = Asteroid;\n\nmodule.exports = Asteroid;\n\n\n//# sourceURL=webpack://webpack_demo/./src/asteroid.js?");
+eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Util = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\n\nfunction Asteroid(size, pos) {\n  this.size = size;\n  this.pos = pos;\n  this.color = \"grey\";\n  this.radius = 50 * size;\n  this.vel = Util.randomVec(size);\n}\n\nfunction Surrogate() {}\n\nSurrogate.prototype = MovingObject.prototype;\nAsteroid.prototype = new Surrogate();\nAsteroid.prototype.constructor = Asteroid;\n\nmodule.exports = Asteroid;\n\n\n//# sourceURL=webpack://webpack_demo/./src/asteroid.js?");
 
 /***/ }),
 
@@ -55,7 +55,7 @@ eval("console.log(\"Index is working\");\n\nconst Asteroid = __webpack_require__
   \******************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Util = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\nfunction MovingObject(pos, vel, radius, color) {\n  this.pos = pos;\n  this.vel = vel;\n  this.radius = radius;\n  this.color = color;\n}\n\nMovingObject.prototype.move = function () {};\n\nMovingObject.prototype.draw = function (ctx) {\n  ctx.beginPath();\n  ctx.arc(this.pos[0], this.pos[1], this.radius, 0, Math.PI * 2, true);\n  ctx.fillStyle = this.color;\n  ctx.fill();\n};\n\nMovingObject.prototype.isCollidedWith = function (otherMovingObject) {};\n\nmodule.exports = MovingObject;\n\n\n//# sourceURL=webpack://webpack_demo/./src/moving_object.js?");
+eval("const Util = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\nfunction MovingObject(pos, vel, radius, color) {\n  this.pos = pos;\n  this.vel = vel;\n  this.radius = radius;\n  this.color = color;\n}\n\nMovingObject.prototype.move = function () {};\n\nMovingObject.prototype.draw = function (ctx) {\n  ctx.beginPath();\n  ctx.arc(this.pos[0], this.pos[1], this.radius, 0, Math.PI * 2, true);\n  ctx.fillStyle = this.color;\n  ctx.fill();\n};\n\nMovingObject.prototype.isCollidedWith = function (otherMovingObject) {};\n\nmodule.exports = MovingObject;\n    \n\n//# sourceURL=webpack://webpack_demo/./src/moving_object.js?");
 
 /***/ }),
 
@@ -65,7 +65,7 @@ eval("const Util = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\nf
   \**********************/
 /***/ ((module) => {
 
-eval("function distance(arr1, arr2) {\n  const x1 = arr1[0];\n  const x2 = arr1[1];\n  const y1 = arr2[0];\n  const y2 = arr2[1];\n\n  return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);\n}\n\nconst Util = {\n  randomVec: function (length) {\n    const deg = 2 * Math.PI * Math.random();\n    return Util.scale([Math.sin(deg), Math.cos(deg)], length);\n  },\n  // Scale the length of a vector by the given amount.\n  scale: function (vec, m) {\n    return [vec[0] * m, vec[1] * m];\n  },\n};\n\nmodule.exports = Util;\n\n\n//# sourceURL=webpack://webpack_demo/./src/utils.js?");
+eval("function distance(arr1, arr2) {\n  const x1 = arr1[0];\n  const x2 = arr1[1];\n  const y1 = arr2[0];\n  const y2 = arr2[1];\n\n  return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);\n}\n\nconst Util = {\n  randomVec(length) {\n    const deg = 2 * Math.PI * Math.random();\n    return Util.scale([Math.sin(deg), Math.cos(deg)], length);\n  },\n  // Scale the length of a vector by the given amount.\n  scale(vec, m) {\n    return [vec[0] * m, vec[1] * m];\n  },\n};\n\nmodule.exports = Util;\n\n\n//# sourceURL=webpack://webpack_demo/./src/utils.js?");
 
 /***/ })
 

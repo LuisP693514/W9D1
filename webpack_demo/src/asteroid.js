@@ -4,15 +4,10 @@ const Util = require("./utils.js");
 function Asteroid(size, pos) {
   this.size = size;
   this.pos = pos;
-  this.COLOR = "grey";
-  this.RADIUS = "100";
-  this.object = new MovingObject(
-    this.pos,
-    Util.randomVec(size),
-    this.RADIUS,
-    this.COLOR
-  );
-}  
+  this.color = "grey";
+  this.radius = 50 * size;
+  this.vel = Util.randomVec(size);
+}
 
 function Surrogate() {}
 
